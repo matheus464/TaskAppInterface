@@ -1,4 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+/* Estilos globais do projeto */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Paleta de Cores */
+:root {
+    /* Principais */
+    --horizonte: #028DDB;
+    --anoitecer: #005DB7;
+
+    /* Secundárias */
+    --tempestade: #232F3E;
+    --chuva: #E0EBFF;
+    --celestial: #F0F4F7;
+
+    /* Destaques */
+    --brisa: #25C3CA;
+    --raio-de-sol: #EEB111;
+    --aurora-rubra: #C1255A;
+    --nebulosa: #474BB6;
+    --bluma: #66CCFF;
+}
+
+html, 
+body { 
+    height: 100%; 
+}
+
+body { 
+    background-color: var(--celestial);
+    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+    
