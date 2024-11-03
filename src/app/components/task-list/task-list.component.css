@@ -11,6 +11,6 @@
     color: var(--tempestade);
 }
 
-.task-item h3 {
+.task-item h6 {
     color: var(--horizonte);
 }
