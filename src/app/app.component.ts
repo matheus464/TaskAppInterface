@@ -7,7 +7,6 @@ import { MatListModule } from '@angular/material/list';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -18,7 +17,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
