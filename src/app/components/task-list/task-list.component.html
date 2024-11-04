@@ -6,12 +6,23 @@
       Excluir Tarefa
     </button>
   </div>
+
+  <!-- Lista de Tarefas -->
   <div *ngFor="let tarefa of tarefas" class="task-item">
     <h6>{{ tarefa.titulo }}</h6>
     <p>{{ tarefa.descricao }}</p>
     <span>Status: {{ tarefa.status }}</span>
-    <button *ngIf="modoExclusao" mat-icon-button color="warn" class="icon-delete" (click)="excluirFuncionario(tarefa.id)">
+
+    <!-- Botão para abrir o modal de edição -->
+    <button (click)="openEditModal(tarefa)" class="associate-button">
+      Editar Tarefa
+    </button>
+
+    <button *ngIf="modoExclusao" mat-icon-button color="warn" class="icon-delete" (click)="excluirTarefa(tarefa.id)">
       <mat-icon>delete</mat-icon>
     </button>
   </div>
 </div>
+
+<!-- Modal de Associação fora da lista de tarefas -->
+

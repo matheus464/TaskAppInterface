@@ -18,6 +18,10 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/Tarefa`);
   }
 
+  getTarefasById( id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/Tarefa/${id}`);
+  }
+
   postPessoas(pessoa: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/Pessoa`, pessoa);
   } 
@@ -32,6 +36,10 @@ export class ApiService {
 
   deleteTarefa(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/Tarefa/${id}`);
+  }
+
+  updateTarefa(id: number, tarefa: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/Tarefa/${id}`, tarefa);
   }
   // Adicione outros métodos para criar, atualizar e excluir
 }

@@ -5,6 +5,7 @@ import { TaskFormularioComponent } from '../task-formulario/task-formulario.comp
 import { MatDialog } from '@angular/material/dialog';
 import { NgIf } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
+import { EditarTaskComponent } from '../editar-task/editar-task.component';
 
 @Component({
   selector: 'app-task-list',
@@ -13,7 +14,8 @@ import { MatIcon } from '@angular/material/icon';
     NgForOf,
     CommonModule,
     NgIf,
-    MatIcon
+    MatIcon,
+    TaskFormularioComponent
   ],
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css']
@@ -23,6 +25,8 @@ export class TaskListComponent implements OnInit {
   modoExclusao = false;
   messageShow = false;
   message = '';
+  isModalVisible = false;
+  tarefaSelecionada: any = null;
   constructor(private apiService: ApiService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
@@ -31,8 +35,40 @@ export class TaskListComponent implements OnInit {
     });
   }
 
+  
+  loadTarefas() {
+    this.apiService.getTarefas().subscribe(data => {
+      this.tarefas = data;
+    });
+  }
+
   toggleExclusao(){
     this.modoExclusao = !this.modoExclusao
+  }
+
+  //modal para edição
+  openEditModal(id: number){
+    const dialogRef = this.dialog.open(EditarTaskComponent, {
+        width: '400px',
+        panelClass: 'task-form-dialog'
+    })
+    dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+            this.apiService.updateTarefa(id, result).subscribe(data => {
+                this.tarefas.push(data);
+            });
+        }
+    })
+  }
+
+  openAssociate(tarefa: any) {
+    this.tarefaSelecionada = tarefa;
+    this.isModalVisible = true;
+  }
+
+  closeAssociateModal() {
+    this.isModalVisible = false;
+    this.tarefaSelecionada = null;
   }
 
   cadastrarTarefa(){
@@ -50,7 +86,7 @@ export class TaskListComponent implements OnInit {
     });
   }
 
-  excluirFuncionario(id: number) {
+  excluirTarefa(id: number) {
     this.apiService.deleteTarefa(id).subscribe({
       next: () => {
         // Remove o funcionário da lista após a exclusão bem-sucedida
