@@ -14,3 +14,50 @@
 .task-item h6 {
     color: var(--horizonte);
 }
+
+.btn-cadastrar {
+    background-color: #EEB111;
+    color: #fff;
+    border-radius: 5px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.btn-excluir {
+    background-color: #C1255A;
+    color: #fff;
+    border-radius: 5px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.header h4 {
+    flex-grow: 1;
+    color: #005DB7;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.alert {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+  }
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+
+  .alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+  }
+  

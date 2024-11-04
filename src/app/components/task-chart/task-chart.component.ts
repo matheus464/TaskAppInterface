@@ -1,21 +1,28 @@
-import { Component, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, ViewChild, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Chart, ChartConfiguration, ChartItem, registerables } from 'chart.js';
 
 @Component({
   selector: 'app-task-chart',
-  standalone: true, // Define como componente standalone
+  standalone: true,
   templateUrl: './task-chart.component.html',
   styleUrls: ['./task-chart.component.css']
 })
 export class TaskChartComponent implements AfterViewInit {
   @ViewChild('chart') chartRef!: ElementRef;
+  private isBrowser: boolean;
 
-  constructor() {
-    Chart.register(...registerables); // Registra todos os componentes do Chart.js
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+    if (this.isBrowser) {
+      Chart.register(...registerables); // Registra todos os componentes do Chart.js somente no cliente
+    }
   }
 
   ngAfterViewInit(): void {
-    this.renderChart();
+    if (this.isBrowser) {
+      this.renderChart(); // Somente executa o código de renderização no lado do cliente
+    }
   }
 
   renderChart() {

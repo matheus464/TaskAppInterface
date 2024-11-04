@@ -1,9 +1,17 @@
 <div class="task-list">
-  <h4>Lista de Tarefas</h4>
-    <div *ngFor="let tarefa of tarefas" class="task-item">
-      <h6>{{ tarefa.titulo }}</h6>
-      <p>{{ tarefa.descricao }}</p>
-      <span>Status: {{ tarefa.status }}</span>
-    </div>
+  <div class="header">
+    <h4>Lista de Tarefas</h4>
+    <button class="add-task-button" (click)="cadastrarTarefa()">+ Nova Tarefa</button>
+    <button mat-raised-button class="btn-excluir" (click)="toggleExclusao()">
+      Excluir Tarefa
+    </button>
   </div>
-  
+  <div *ngFor="let tarefa of tarefas" class="task-item">
+    <h6>{{ tarefa.titulo }}</h6>
+    <p>{{ tarefa.descricao }}</p>
+    <span>Status: {{ tarefa.status }}</span>
+    <button *ngIf="modoExclusao" mat-icon-button color="warn" class="icon-delete" (click)="excluirFuncionario(tarefa.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>

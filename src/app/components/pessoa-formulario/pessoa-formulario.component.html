@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>Cadastrar Funcionário</h2>
+<mat-dialog-content [formGroup]="pessoaForm">
+  <mat-form-field appearance="fill">
+    <label>Nome</label>
+    <input matInput formControlName="nome" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <label>Email</label>
+    <input matInput type="email" formControlName="email" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <label>Data de Nascimento</label>
+    <input matInput type="date" formControlName="dataNascimento" required>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="save()">Salvar</button>
+</mat-dialog-actions>

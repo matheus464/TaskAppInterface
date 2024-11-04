@@ -1,13 +1,29 @@
+<div *ngIf="messageShow" [ngClass]="{'alert-success': message.includes('sucesso'), 'alert-error': message.includes('Não é possível')}" class="alert">
+  {{ message }}
+</div>
+
+
 <div class="task-list" *ngIf="pessoas.length; else noData">
+  <div class="header">
     <h4>Lista de Funcionarios</h4>
-    <div class="task-item" *ngFor="let pessoa of pessoas">
-      <h6>{{ pessoa.nome }}</h6>
-      <p>Email: {{ pessoa.email }}</p>
-      <p>Data de Nascimento: {{ pessoa.dataNascimento | date: 'dd/MM/yyyy' }}</p>
-    </div>
+    <button mat-raised-button class="btn-cadastrar" (click)="cadastrarFuncionario()">
+      Cadastrar Funcionário
+    </button>
+    <button mat-raised-button class="btn-excluir" (click)="toggleExclusao()">
+      Excluir Funcionário
+    </button>
   </div>
-  
-  <ng-template #noData>
-    <p>Nenhuma pessoa encontrada.</p>
-  </ng-template>
-  
+
+  <div class="task-item" *ngFor="let pessoa of pessoas">
+    <h6>{{ pessoa.nome }}</h6>
+    <p>Email: {{ pessoa.email }}</p>
+    <p>Data de Nascimento: {{ pessoa.dataNascimento | date: 'dd/MM/yyyy' }}</p>
+    <button *ngIf="modoExclusao" mat-icon-button color="warn" class="icon-delete" (click)="excluirFuncionario(pessoa.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>
+
+<ng-template #noData>
+  <p>Nenhuma pessoa encontrada.</p>
+</ng-template>

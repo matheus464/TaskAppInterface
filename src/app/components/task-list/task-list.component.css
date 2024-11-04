@@ -11,6 +11,28 @@
     color: var(--tempestade);
 }
 
+.add-task-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    gap: 10px;
+  }
+  
 .task-item h6 {
     color: var(--horizonte);
+}
+
+.btn-excluir {
+    background-color: #C1255A;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    gap: 10px;
 }

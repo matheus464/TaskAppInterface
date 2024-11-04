@@ -1,0 +1,20 @@
+mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.task-form-dialog {
+    width: 100%;
+    max-width: 100%;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+mat-checkbox {
+    margin-top: 15px;
+}
